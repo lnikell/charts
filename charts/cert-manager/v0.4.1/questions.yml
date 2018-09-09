@@ -1,0 +1,39 @@
+questions:
+- variable: defaultImage
+  default: "true"
+  description: "Use default Docker image"
+  label: Use Default Image
+  type: boolean
+  show_subquestion_if: false
+  group: "Container Images"
+  subquestions:
+  - variable: image.repository
+    default: "quay.io/jetstack/cert-manager-controller"
+    description: "Cert-Manager Docker image name"
+    type: string
+    label: Cert-Manager Docker Image Name
+  - variable: image.tag
+    default: "v0.4.1"
+    description: "Cert-Manager Docker image tag"
+    type: string
+    label: Cert-Manager Image Tag
+- variable: letsencrypt.email
+  default: ""
+  required: true
+  type: string
+  label: Let's Encrypt Notification Email
+  group: "Settings"
+- variable: letsencrypt.server
+  default: "https://acme-v02.api.letsencrypt.org/directory"
+  required: true
+  type: string
+  label: Let's Encrypt Server Environment
+  description: "Default production. About staging server read more at https://letsencrypt.org/docs/staging-environment/"
+  group: "Settings"
+- variable: ingressShim.defaultIssuerName
+  default: "letsencrypt-prod"
+  required: true
+  type: string
+  description: "The name of your Cluster issuer, which will be used by Kubernetes and Certificate Issuer. It will be used as default issuer(ingress-shim). Read more https://cert-manager.readthedocs.io/en/latest/reference/ingress-shim.html"
+  label: Let's Encrypt Cluster Issuer Name
+  group: "Settings"
